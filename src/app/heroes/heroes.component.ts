@@ -5,6 +5,7 @@ import {
   UpperCasePipe,
 } from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import {Hero} from '../hero';
 import { HeroDetailsComponent } from '../hero-details/hero-details.component';
@@ -18,6 +19,7 @@ import { MessageService } from '../services/message.service';
   styleUrls: ['./heroes.component.scss'],
   imports: [
     FormsModule,
+    RouterModule,
     NgIf,
     NgFor,
     UpperCasePipe,
