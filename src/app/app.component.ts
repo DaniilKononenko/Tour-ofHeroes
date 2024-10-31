@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterModule } from '@angular/router';
 import { HeroesComponent } from "./heroes/heroes.component";
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -11,7 +11,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     RouterOutlet,
     HeroesComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    RouterModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
