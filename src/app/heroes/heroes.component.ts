@@ -1,14 +1,9 @@
-import {Component} from '@angular/core';
-import {
-  NgIf,
-  NgFor,
-  UpperCasePipe,
-} from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import { Component } from '@angular/core';
+import { NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import {Hero} from '../hero';
-import { HeroDetailsComponent } from '../hero-details/hero-details.component';
+import { Hero } from '../hero';
 import { HeroService } from '../services/hero.service';
 import { MessageService } from '../services/message.service';
 
@@ -20,10 +15,7 @@ import { MessageService } from '../services/message.service';
   imports: [
     FormsModule,
     RouterModule,
-    NgIf,
     NgFor,
-    UpperCasePipe,
-    HeroDetailsComponent
   ],
 })
 
@@ -44,6 +36,20 @@ export class HeroesComponent {
 
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
-    this.messageService.add(`HeroComponent: selected hero id=${hero.id}`)
+    this.messageService.add(`HeroComponent: selected hero id=${hero.id}`);
+  }
+
+  add(name: string): void {
+    name = name.trim();
+    if(!name) { return; }
+    this.heroService.addHero({ name } as Hero)
+      .subscribe(hero => {
+        this.heroes.push(hero);
+      });
+  }
+
+  delete(hero: Hero): void {
+    this.heroes = this.heroes.filter(h => h != hero);
+    this.heroService.deleteHero(hero.id).subscribe();
   }
 }
